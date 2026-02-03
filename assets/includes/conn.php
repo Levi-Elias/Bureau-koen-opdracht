@@ -15,7 +15,7 @@
                 $this->servername = 'localhost';
                 $this->username   = 'root';
                 $this->password   = '';
-                $this->dbname     = 'stages';
+                $this->dbname     = 'stageboard';
                 $this->charset    = 'utf8mb4';
             } else {
                 // Production environment

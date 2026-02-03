@@ -1,6 +1,6 @@
-<!-- <?php
+<?php
 session_start();
-require_once __DIR__ . '/conn.php';
+require_once __DIR__ . '/assets/includes/conn.php';
 
 $dbConnection = new DbhConnection();
 $pdo = $dbConnection->connect();
@@ -89,4 +89,4 @@ function escape(string $value): string
     </main>
 </body>
 
-</html> -->
+</html>
