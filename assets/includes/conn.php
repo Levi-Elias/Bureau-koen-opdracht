@@ -20,10 +20,10 @@
             } else {
                 // Production environment
                 $this->servername = 'localhost';
-                $this->username   = 'u240407_Utrechts';
-                $this->password   = 'v7fKjaCn9kQE4DFZaLFd';
-                $this->dbname     = 'u240407_Utrechts';
-                $this->charset    = 'utf8mb4';
+                $this->username   = '';
+                $this->password   = '';
+                $this->dbname     = '';
+                $this->charset    = '';
             }
 
             $dsn = 'mysql:host=' . $this->servername . ';dbname=' . $this->dbname . ';charset=' . $this->charset;
