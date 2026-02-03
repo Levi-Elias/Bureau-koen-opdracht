@@ -15,8 +15,8 @@
                 $this->servername = 'localhost';
                 $this->username   = 'root';
                 $this->password   = '';
-                $this->dbname     = 'utrecht_archief';
-                $this->charset    = 'utf8mb4';
+                $this->dbname     = '';
+                $this->charset    = '';
             } else {
                 // Production environment
                 $this->servername = 'localhost';
