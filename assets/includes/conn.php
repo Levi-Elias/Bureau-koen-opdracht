@@ -15,15 +15,15 @@
                 $this->servername = 'localhost';
                 $this->username   = 'root';
                 $this->password   = '';
-                $this->dbname     = '';
-                $this->charset    = '';
+                $this->dbname     = 'stages';
+                $this->charset    = 'utf8mb4';
             } else {
                 // Production environment
                 $this->servername = 'localhost';
                 $this->username   = '';
                 $this->password   = '';
                 $this->dbname     = '';
-                $this->charset    = '';
+                $this->charset    = 'utf8mb4';
             }
 
             $dsn = 'mysql:host=' . $this->servername . ';dbname=' . $this->dbname . ';charset=' . $this->charset;
