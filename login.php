@@ -1,6 +1,6 @@
-<!-- <?php
+<?php
 session_start();
-require_once __DIR__ . '/conn.php';
+require_once __DIR__ . '/assets/includes/conn.php';
 
 $dbConnection = new DbhConnection();
 $pdo = $dbConnection->connect();
@@ -34,35 +34,8 @@ function escape(string $value): string
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
+require_once __DIR__ . '/assets/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <title>Inloggen - Het Utrechts Archief</title>
-</head>
-
-<body>
-    <header class="site_header">
-        <div class="warp">
-            <div class="branding">
-                <div class="logo">
-                    <div class="logo-background">
-                        <img src="assets\images\logo-web.svg" alt="Logo Het Utrechts Archief">
-                    </div>
-                </div>
-                <div class="title">
-                    <h1>Het Utrechts <br> Archief </br></h1>
-                    <p>login</p>
-                </div>
-                <div class="space"></div>
-            </div>
-        </div>
-    </header>
 
     <main>
         <section class="auth">
@@ -74,14 +47,14 @@ function escape(string $value): string
                     <?php endif; ?>
                     <form method="post" class="auth-form">
                         <label for="username">Gebruikersnaam</label>
-                        <input type="text" id="username" name="username" required>
+                        <input type="text" id="username" name="username" required><br>
 
                         <label for="password">Wachtwoord</label>
-                        <input type="password" id="password" name="password" required>
+                        <input type="password" id="password" name="password" required><br>
 
                         <button type="submit" class="btn">Inloggen</button>
                     </form>
-                    <p class="auth-status">Nog geen account? <a href="signup.php">Maak er één aan</a>.</p>
+                    <!-- <p class="auth-status">Nog geen account? <a href="signup.php">Maak er één aan</a>.</p> -->
                     <p class="auth-status"><a href="index.php">Terug naar startpagina</a></p>
                 </div>
             </div>
@@ -89,4 +62,4 @@ function escape(string $value): string
     </main>
 </body>
 
-</html> -->
+</html>
