@@ -1,6 +1,6 @@
-<!-- <?php
+<?php
 session_start();
-require_once __DIR__ . '/conn.php';
+require_once __DIR__ . '/assets/includes/conn.php';
 
 $dbConnection = new DbhConnection();
 $pdo = $dbConnection->connect();
@@ -36,57 +36,54 @@ function escape(string $value): string
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <title>Inloggen - Het Utrechts Archief</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Inloggen — Het Bureau</title>
 </head>
 
 <body>
-    <header class="site_header">
-        <div class="warp">
-            <div class="branding">
-                <div class="logo">
-                    <div class="logo-background">
-                        <img src="assets\images\logo-web.svg" alt="Logo Het Utrechts Archief">
-                    </div>
+    <div class="login-page">
+        <div class="shape-top-left"></div>
+        <div class="shape-bottom-right"></div>
+
+        <div class="login-wrap">
+            <img src="assets/img/logo.webp" alt="Het Bureau" class="login-logo">
+
+            <div class="login-card">
+                <div class="login-card-header">Inloggen</div>
+
+                <div class="login-card-body">
+                    <?php if ($loginError): ?>
+                        <div class="login-error"><?= escape($loginError); ?></div>
+                    <?php endif; ?>
+
+                    <form method="post">
+                        <div class="login-field">
+                            <label for="username">Gebruikersnaam</label>
+                            <input type="text" id="username" name="username" autocomplete="username" required>
+                        </div>
+
+                        <div class="login-field" style="margin-top:14px;">
+                            <label for="password">Wachtwoord</label>
+                            <input type="password" id="password" name="password" autocomplete="current-password" required>
+                        </div>
+
+                        <button type="submit" class="login-btn">Inloggen</button>
+                    </form>
                 </div>
-                <div class="title">
-                    <h1>Het Utrechts <br> Archief </br></h1>
-                    <p>login</p>
+
+                <div class="login-card-footer">
+                    <p>Nog geen account? <a href="signup.php">Registreren</a></p>
+                    <p><a href="index.php">Terug naar overzicht</a></p>
                 </div>
-                <div class="space"></div>
             </div>
         </div>
-    </header>
-
-    <main>
-        <section class="auth">
-            <div class="warp">
-                <div class="auth-card">
-                    <h2>Log in</h2>
-                    <?php if ($loginError): ?>
-                        <p class="auth-message error"><?= escape($loginError); ?></p>
-                    <?php endif; ?>
-                    <form method="post" class="auth-form">
-                        <label for="username">Gebruikersnaam</label>
-                        <input type="text" id="username" name="username" required>
-
-                        <label for="password">Wachtwoord</label>
-                        <input type="password" id="password" name="password" required>
-
-                        <button type="submit" class="btn">Inloggen</button>
-                    </form>
-                    <p class="auth-status">Nog geen account? <a href="signup.php">Maak er één aan</a>.</p>
-                    <p class="auth-status"><a href="index.php">Terug naar startpagina</a></p>
-                </div>
-            </div>
-        </section>
-    </main>
+    </div>
 </body>
 
-</html> -->
+</html>
