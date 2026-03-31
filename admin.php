@@ -336,7 +336,10 @@ $stages = $pdo->query('SELECT * FROM stages ORDER BY datum DESC')->fetchAll(PDO:
                         <label>Bedrijfsnaam <input name="bedrijf" required></label>
                         <label>Website URL <input name="link" type="url" placeholder="https://"></label>
                         <label>Datum <input name="datum" type="date"></label>
-                        <label>Foto URL <input name="foto" placeholder="https://..."></label>
+                        <label class="form-grid__full foto-field">Foto URL
+                            <input name="foto" placeholder="https://..." oninput="previewFoto(this)">
+                            <img class="foto-thumb" src="" alt="" hidden>
+                        </label>
                         <label class="form-grid__full">Beschrijving <textarea name="beschrijving" rows="3" required></textarea></label>
                     </div>
                     <div class="cms-actions">
@@ -349,6 +352,7 @@ $stages = $pdo->query('SELECT * FROM stages ORDER BY datum DESC')->fetchAll(PDO:
                         <div class="table__header table__header--stages">
                             <div>ID</div>
                             <div>Bedrijf</div>
+                            <div>Website URL</div>
                             <div>Datum</div>
                             <div>Beschrijving</div>
                             <div>Foto</div>
@@ -362,9 +366,15 @@ $stages = $pdo->query('SELECT * FROM stages ORDER BY datum DESC')->fetchAll(PDO:
 
                                 <div class="table__cell-id">#<?= (int)$s['id'] ?></div>
                                 <div><input name="bedrijf" value="<?= escape($s['bedrijf']) ?>" required></div>
+                                <div><input name="link" type="url" value="<?= escape($s['link'] ?? '') ?>" placeholder="https://"></div>
                                 <div><input name="datum" type="date" value="<?= escape($s['datum'] ?? '') ?>"></div>
                                 <div><textarea name="beschrijving" rows="2" required><?= escape($s['beschrijving']) ?></textarea></div>
-                                <div><input name="foto" value="<?= escape($s['foto'] ?? '') ?>" placeholder="https://..."></div>
+                                <div class="foto-cell">
+                                    <div class="foto-thumb-wrap">
+                                        <img class="foto-thumb" src="<?= escape($s['foto'] ?? '') ?>" alt="" <?= empty($s['foto']) ? 'style="opacity:0"' : '' ?>>
+                                    </div>
+                                    <input name="foto" value="<?= escape($s['foto'] ?? '') ?>" placeholder="https://..." oninput="previewFoto(this)">
+                                </div>
                                 <div class="table__actions"><button class="btn">Opslaan</button></div>
                             </form>
 
@@ -385,6 +395,27 @@ $stages = $pdo->query('SELECT * FROM stages ORDER BY datum DESC')->fetchAll(PDO:
 
         </div>
     </main>
+    <script>
+        function previewFoto(input) {
+            var url = input.value.trim();
+            var img = (input.nextElementSibling && input.nextElementSibling.tagName === 'IMG')
+                ? input.nextElementSibling
+                : null;
+            if (!img) {
+                var cell = input.closest('.foto-cell');
+                if (cell) img = cell.querySelector('.foto-thumb');
+            }
+            if (!img) return;
+            if (url) {
+                img.src = url;
+                img.style.opacity = '1';
+                img.hidden = false;
+            } else {
+                img.src = '';
+                img.style.opacity = '0';
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -41,6 +41,7 @@ function escape(string $value): string
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/webp" href="assets/img/logo.webp">
     <link rel="stylesheet" href="assets/css/style.css?v=2">
     <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&display=swap" rel="stylesheet">
     <title>Inloggen — Het Bureau</title>
@@ -59,7 +60,7 @@ function escape(string $value): string
 
                 <div class="login-card-body">
                     <?php if ($loginError): ?>
-                        <div class="login-error"><?= escape($loginError); ?></div>
+                    <div class="login-error"><?= escape($loginError); ?></div>
                     <?php endif; ?>
 
                     <form method="post">
@@ -70,7 +71,8 @@ function escape(string $value): string
 
                         <div class="login-field" style="margin-top:14px;">
                             <label for="password">Wachtwoord</label>
-                            <input type="password" id="password" name="password" autocomplete="current-password" required>
+                            <input type="password" id="password" name="password" autocomplete="current-password"
+                                required>
                         </div>
 
                         <button type="submit" class="login-btn">Inloggen</button>
@@ -78,7 +80,6 @@ function escape(string $value): string
                 </div>
 
                 <div class="login-card-footer">
-                    <p>Nog geen account? <a href="signup.php">Registreren</a></p>
                     <p><a href="index.php">Terug naar overzicht</a></p>
                 </div>
             </div>
